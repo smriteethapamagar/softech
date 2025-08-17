@@ -6,7 +6,7 @@ function Footer() {
   return (
     <>
     <div style={{background: '#014B88', color: 'white'}}>
-    <div className='d-flex justify-content-between p-5' >
+    <div className='d-flex justify-content-between px-5 pt-5' >
       <div className="col-lg-3">
         <img src={logo} alt="" width={100}/>
         <p>We're an innovative IT company <br />

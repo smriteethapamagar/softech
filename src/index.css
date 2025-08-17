@@ -69,8 +69,8 @@
 }
 .shadow
 {
-  width: 300px;
-  height: 270px;
+  width: 250px;
+  height: 240px;
   padding: 20px;
   border: 1px solid white;
   border-radius: 20px;
@@ -130,4 +130,207 @@
 .add
 {
   margin-left: 100px;
+}
+
+.form
+{
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.shadow
+{
+  width: 500px;
+  height: 400px;
+}
+
+.go
+{
+  border: 2px solid black;
+  padding: 5px 30px;
+  
+}
+.input-icon
+{
+ position: relative;
+}
+
+.input-icon .bi
+{
+  position: absolute;
+  padding: 5px 0 0 10px ;
+  color: rgb(163, 162, 162);
+}
+.aa
+{
+  border: none;
+  background: rgb(216, 213, 213);
+  padding: 5px;
+}
+.bn
+{
+  background: #014B88;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 5px;
+}
+.gg
+{
+  padding-right: 15px;
+  
+}
+.line
+{
+  height: 1px;
+  background: 1px solid black;
+  width: 10px;
+}
+.contact
+{
+  background: #DAE7FF;
+  padding: 60px 0;
+  font-weight: bold;
+}
+.image
+{
+  width: 300px;
+  border-radius: 10px;
+}
+.b1
+{
+  background: #EEEEEE;
+}
+.box1
+{
+  flex: 1 1 calc(33.33% - 10px);
+ padding: 40px;
+}
+.bb
+{
+  border: none;
+  padding: 5px;
+  text-decoration: none;
+}
+.ic
+{
+  color: #014B88;
+  padding-right: 8px;
+}
+.con
+{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 30px;
+}
+.cont
+{
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+.blg
+{
+  width: 1271px;
+  height: 701px;
+}
+.photo
+{
+  position: relative;
+  height: 539px;
+  width: 835px;
+}
+.photo1
+{
+  position: absolute;
+  top: 0;
+  left: 0;
+ 
+}
+.photo2
+{
+position: absolute;
+left: 50%;
+z-index: 1;
+}
+.send
+{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.sen 
+{
+width: 500px;
+padding: 5px;
+border-radius: 5px;
+background: #DAE7FF;
+}
+.button
+{
+  background: #014B88;
+  color: white;
+  border: none;
+  padding: 6px 20px;
+  border-radius: 5px;
+  margin: 15px 90px;
+}
+.tp 
+{
+  height: 150px;
+}
+.tt 
+{
+  width: 891px;
+  height: 503px;
+}
+.pp 
+{
+  margin: 30px 35px;
+}
+
+.pt 
+{
+  padding: 4px 97px;
+}
+.ii 
+{
+  color: #014B88;
+  margin-right: 6px;
+}
+.hov 
+{
+  display: inline;
+  padding: 8px 16px;
+  border-radius: 4px;
+  transition: background 0.2s;
+}
+.hov:hover
+{
+background-color: rgba(255, 255, 255, 0.1);
+}
+.hvr:hover
+{
+background-color: #014B88 !important; /* Dark background on hover */
+  color: #ffffff !important;            /* White text on hover */
+  border-color: #014B88 !important;     /* Optional: match border */
+  transition: 0.3s ease;      
+}
+.logo-hover img:hover
+{
+  transform: scale(1.05);        /* slightly zoom in */
+  transition: transform 0.3s ease;
+  cursor: pointer;               /* optional, shows it's clickable */
+}
+.explore-btn:hover {
+  background-color: #012f5d !important; /* darker blue on hover */
+  color: #ffffff !important;
+  transition: background-color 0.3s ease;
+}
+
+/* Optional: animate the arrow icon on hover */
+.explore-btn:hover .bi-arrow-right {
+  transform: translateX(4px);   /* move arrow slightly right */
+  transition: transform 0.3s ease;
 }

@@ -7,6 +7,7 @@ import python from '../assets/python.webp'
 import qa from '../assets/qa.webp'
 import web from '../assets/web.webp'
 import study from '../assets/study.avif'
+import { Link } from 'react-router-dom'
 
 function Home() {
   return (
@@ -22,7 +23,9 @@ function Home() {
           <p style={{ color: 'gray' }}>Gain real-world experience through internships, collaborate with peers, <br />
             and achieve your academic goals together.
           </p>
-          <button type="button" className='p-2 rounded mb-3' style={{ backgroundColor: '#014B88', color: 'white', border: 'none', alignItems: 'center' }} >Explore Our Courses<i className="bi bi-arrow-right ms-2" /></button>
+          <Link type="button" className='p-2 rounded mb-3 text-decoration-none explore-btn' to="/courses"
+          style={{ backgroundColor: '#014B88', color: 'white', border: 'none', alignItems: 'center' }} >
+            Explore Our Courses<i className="bi bi-arrow-right ms-2" /></Link>
 
           <div>
             <p style={{ color: 'gray' }}>Popular Courses:

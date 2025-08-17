@@ -1,9 +1,16 @@
 import React from 'react'
 
-function SendInquiry() {
+function ContactUs() {
   return (
-    <>
-      <div className='container border top'>
+    <div>
+     <div className='d-flex justify-content-center contact'>
+        <div className='text-center'>
+          <h1>CONTACT US</h1>
+          <p>We're Here to Help You Learn</p>
+          </div>
+          </div>
+      <div className='container top'>
+       <div className='border mb-5'>
       <div className='head'>
       <h2>Get In Touch With Us</h2>
       <p style={{ color: 'gray' }}>For More information About Our Product & Services Please Feel Free To Drop Us An <br />
@@ -52,8 +59,9 @@ function SendInquiry() {
         </div>
       </div>
       </div>
-    </>
+      </div>
+      </div>
   )
 }
 
-export default SendInquiry
+export default ContactUs
