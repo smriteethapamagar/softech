@@ -9,6 +9,7 @@ import EnquiryForm from '../Pages/EnquiryForm'
 import ContactUs from '../Pages/ContactUs'
 import Courses from '../Pages/Courses'
 import CourseDetails from '../Pages/CourseDetails'
+import AdminPanel from '../Pages/AdminPanel'
 
 function Header() {
   return (
@@ -36,6 +37,7 @@ function Header() {
       </header>
       <Routes>
         <Route path='/' element={<Home/>}/>
+        <Route path='/adminpanel' element={<AdminPanel/>}/>
         <Route path='/contactus' element={<ContactUs/>}/>
         <Route path='/blogs' element={<Blogs/>}/>
         <Route path='/courses' element={<Courses/>}/>
