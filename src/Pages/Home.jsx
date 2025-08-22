@@ -15,7 +15,7 @@ function Home() {
       <div className="container">
     <div className="row">
         <div className="col-lg-6">
-          <div className="badge text-bg mt-5" style={{ background: '#DAE7FF', color: '#014B88' }}>
+          <div className="badge text-bg mt-5 p-2" style={{ background: '#DAE7FF', color: '#014B88' }}>
             Boost Your Skills with Hands-on experience
           </div>
 
@@ -23,7 +23,7 @@ function Home() {
           <p style={{ color: 'gray' }}>Gain real-world experience through internships, collaborate with peers, <br />
             and achieve your academic goals together.
           </p>
-          <Link type="button" className='p-2 rounded mb-3 text-decoration-none explore-btn' to="/courses"
+          <Link type="button" className='p-3 rounded mb-3 text-decoration-none explore-btn' to="/courses"
           style={{ backgroundColor: '#014B88', color: 'white', border: 'none', alignItems: 'center' }} >
             Explore Our Courses<i className="bi bi-arrow-right ms-2" /></Link>
 
@@ -42,7 +42,7 @@ function Home() {
         </div>
 
 
-      <div className='d-flex justify-content-between py-2 gap-2 my-4' style={{ background: '#DAE7FF' }}>
+      <div className='d-flex justify-content-between py-2 gap-2 my-4 align-items-center' style={{ background: '#DAE7FF' }}>
         <div className="col">
           <h1 className='fw-bold ' style={{ color: '#014B88' }}>2500+</h1>
           <p className=''>Job Placements</p>
@@ -347,13 +347,13 @@ function Home() {
 
       </div>
 
-      <div>
-        <h2 className='fw-bold mt-5 ms-5'>Why Choose Softech Foundation?</h2>
+      <div className=''>
+        <h2 className='fw-bold mt-5 ms-5 '>Why Choose Softech Foundation?</h2>
         <p className='ms-5' style={{ color: 'gray' }}>At Softech Foundation, we offer industry-aligned training with practical sessions
            and mentorship, designed to <br /> enhance your skills and boost your career prospects.
         </p>
         <div className='real'>
-          <div className="shadow">
+          <div className="shadow" style={{ width: '400px', height: '300px' }}>
             <p className='one'>1</p>
             <h6 className='fw-bold' style={{ color: '#014B88' }}>Practical Experience</h6>
             <p style={{ color: 'gray' }}>Working on real projects allows <br /> learners to apply their
@@ -361,12 +361,12 @@ function Home() {
                of how <br /> technology is used in the <br /> industry.
             </p>
           </div>
-          <div className="shadow">
+          <div className="shadow" style={{ width: '400px', height: '300px' }}>
             <p className='one'>2</p>
             <h6 className='fw-bold' style={{ color: '#014B88' }}>Skill Development</h6>
             <p style={{ color: 'gray' }}>We offer oppourtunities to <br /> enhance technical skills and <br /> acquire new ones.</p>
           </div>
-          <div className="shadow">
+          <div className="shadow" style={{ width: '400px', height: '300px' }}>
             <p className='one'>3</p>
             <h6 className='fw-bold' style={{ color: '#014B88' }}>Industry Oriented Content</h6>
             <p style={{ color: 'gray' }}>We Provide insights into the latest <br />
@@ -374,7 +374,7 @@ function Home() {
                industry. Explore emerging <br />
                technologies.</p>
           </div>
-          <div className="shadow">
+          <div className="shadow" style={{ width: '400px', height: '300px' }}>
             <p className='one'>4</p>
             <h6 className='fw-bold' style={{ color: '#014B88' }}>Resume Enhancement</h6>
             <p style={{ color: 'gray' }}>Having a tech internship on your <br />
@@ -382,14 +382,14 @@ function Home() {
                out among other candidates and <br /> increase your chances of landing a <br />
                full-time job after graduation.</p>
           </div>
-          <div className="shadow">
+          <div className="shadow" style={{ width: '400px', height: '300px' }}>
             <p className='one'>5</p>
             <h6 className='fw-bold' style={{ color: '#014B88' }}>Project Management Skills</h6>
             <p style={{ color: 'gray' }}>Internships immerse participants in <br />
                project-based work, fostering <br /> essential skills in project <br /> management, task priorization, and <br />
                adherence to deadlines within a <br /> professional setting.</p>
           </div>
-          <div className="shadow">
+          <div className="shadow" style={{ width: '400px', height: '300px' }}>
             <p className='one'>6</p>
             <h6 className='fw-bold' style={{ color: '#014B88' }}>Industry Exposure</h6>
             <p style={{ color: 'gray' }}>We allow individuals to gain insights <br />

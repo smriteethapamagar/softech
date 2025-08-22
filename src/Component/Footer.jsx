@@ -6,7 +6,7 @@ function Footer() {
   return (
     <>
     <div style={{background: '#014B88', color: 'white'}}>
-    <div className='d-flex justify-content-between px-5 pt-5' >
+    <div className='d-flex justify-content-between px-5 pt-5 m-5' >
       <div className="col-lg-3">
         <img src={logo} alt="" width={100}/>
         <p>We're an innovative IT company <br />
@@ -39,19 +39,19 @@ function Footer() {
           <li>Careers</li>
         </ul>
       </div>
-      <div className="col-lg-4 p-3">
+      <div className="col-lg-3 p-3">
         <h3>Contact Us</h3>
         <p>
-          <i className="bi bi-geo-alt p-2"></i>
+          <i className="bi bi-geo-alt mx-1"></i>
           Nearby Baneshwor Futsal, Mid-Baneshwor <br />
           Kathmandu Nepal
         </p>
         <p>
-          <i className="bi bi-envelope p-2"></i>
+          <i className="bi bi-envelope mx-1"></i>
           info@softechfoundation.com
           </p>
         <p>
-          <i className="bi bi-telephone p-2"></i>
+          <i className="bi bi-telephone mx-1"></i>
           +977 9801057976 / +977 9801066911 / <br />
           +977 9801127340
         </p>
