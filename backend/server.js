@@ -13,6 +13,10 @@ app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 app.use(cookieParser());
 
+app.use('/api/contact', )
+app.use('/api/request', )
+app.use('/api/inquiry', )
+
 
 app.listen(PORT, ()=>{
     console.log(`Server is running on port ${PORT}`);
