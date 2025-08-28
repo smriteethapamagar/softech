@@ -493,6 +493,7 @@ function Home() {
                     onChange={handleInputChange}
                     className="form-control" 
                     rows="4" 
+                    style={{ resize: 'none', height: 'auto' }}
                     placeholder="How can we help you?"
                   ></textarea>
                 </div>
