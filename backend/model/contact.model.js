@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const requestSchema = new mongoose.Schema(
+const contactSchema = new mongoose.Schema(
   {
     name: {
       type: String,
@@ -31,6 +31,6 @@ const requestSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-const Request = mongoose.model("Request", requestSchema);
+const Contact = mongoose.model("Contact", contactSchema);
 
-export default Request;
+export default Contact;
