@@ -18,6 +18,8 @@ app.use(cookieParser());
 
 app.use('/api/contact', contactRoutes)
 app.use('/api/inquiry', inquiryRoutes)
+// app.use('/api/blogs',)
+// app.use('/api/courses', )
 
 
 app.listen(PORT, ()=>{
