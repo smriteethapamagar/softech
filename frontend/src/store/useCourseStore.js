@@ -1,5 +1,6 @@
 import { create } from "zustand";
-import { axiosInstance } from "../axios"; // adjust path if needed
+import { axiosInstance } from "../libs/axios";
+
 
 const useCourseStore = create((set, get) => ({
   courses: [],

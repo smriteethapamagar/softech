@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { axiosInstance } from "../utils/axios";
+import { axiosInstance } from "../libs/axios";
 
 export const useInquiryStore = create((set) => ({
   inquiries: [],

@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { axiosInstance } from "../utils/axios"; // adjust path if needed
+import { axiosInstance } from "../libs/axios";
 
 export const useContactStore = create((set) => ({
   contacts: [],
