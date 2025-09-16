@@ -12,6 +12,36 @@ import EnquiryForm from './Pages/EnquiryForm'
 import Login from './Pages/Login'
 
 function App() {
+
+    const location = useLocation();
+  const isAdminRoute = location.pathname.startsWith("/admin");
+  const {
+    authUser,
+    checkAuth,
+    isCheckingAuth
+  } = useAuthStore();
+  
+  const protectedRoutes = [
+    "/admin/login",
+  ];
+
+  const isProtectedRoute = protectedRoutes.some(route =>
+    location.pathname.startsWith(route)
+  );
+
+  useEffect(() => {
+    if (isProtectedRoute) {
+      checkAuth();
+    }
+  }, [checkAuth, isProtectedRoute]);
+
+  if (isProtectedRoute && isCheckingAuth && !authUser) {
+    return (
+      <div className='flex justify-center items-center h-screen'>
+        <LoaderCircle className='size-20 animate-spin text-red-700' />
+      </div>
+    );
+  }
   return (
     <>
       <Header/>
@@ -23,7 +53,12 @@ function App() {
         <Route path='/coursedetails' element={<CourseDetails/>}/>
         <Route path='/blogdetails' element={<BlogDetails/>}/>
         <Route path='/inquiryform' element={<EnquiryForm/>}/>
-        <Route path='/login' element={<Login/>}/>
+
+        {/* admin */}
+          <Route path="/admin" element={authUser? <AdminDashboard /> :<Navigate to="/admin/login" />} />
+          <Route path="/admin/login" element={!authUser?<AdminLogin />:<Navigate to="/admin" />}/>
+
+
       </Routes> 
       <Footer/>
     </>
