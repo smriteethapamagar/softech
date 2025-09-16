@@ -1,7 +1,7 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Header from './Component/Header'
 import Footer from './Component/Footer'
-import { Route, Routes } from 'react-router-dom'
+import { Route, Routes, useLocation } from 'react-router-dom'
 import Home from './Pages/Home'
 import ContactUs from './Pages/ContactUs'
 import Blogs from './Pages/Blogs'
@@ -9,9 +9,40 @@ import Courses from './Pages/Courses'
 import CourseDetails from './Pages/CourseDetails'
 import BlogDetails from './Pages/BlogDetails'
 import EnquiryForm from './Pages/EnquiryForm'
-import Login from './Pages/Login'
+import AdminDashboard from './admin/pages/Dashboard'
+import { useAuthStore } from './store/useAuthStore'
 
 function App() {
+
+    const location = useLocation();
+  const isAdminRoute = location.pathname.startsWith("/admin");
+  const {
+    authUser,
+    checkAuth,
+    isCheckingAuth
+  } = useAuthStore();
+  
+  const protectedRoutes = [
+    "/admin/login",
+  ];
+
+  const isProtectedRoute = protectedRoutes.some(route =>
+    location.pathname.startsWith(route)
+  );
+
+  useEffect(() => {
+    if (isProtectedRoute) {
+      checkAuth();
+    }
+  }, [checkAuth, isProtectedRoute]);
+
+  if (isProtectedRoute && isCheckingAuth && !authUser) {
+    return (
+      <div className='flex justify-center items-center h-screen'>
+        <LoaderCircle className='size-20 animate-spin text-red-700' />
+      </div>
+    );
+  }
   return (
     <>
       <Header/>
@@ -23,7 +54,13 @@ function App() {
         <Route path='/coursedetails' element={<CourseDetails/>}/>
         <Route path='/blogdetails' element={<BlogDetails/>}/>
         <Route path='/inquiryform' element={<EnquiryForm/>}/>
-        <Route path='/login' element={<Login/>}/>
+
+        {/* admin */}
+          {/* <Route path="/admin" element={authUser? <AdminDashboard /> :<Navigate to="/admin/login" />} /> */}
+          <Route path="/admin" element={<AdminDashboard />} />
+          {/* <Route path="/admin/login" element={!authUser?<AdminLogin />:<Navigate to="/admin" />}/> */}
+
+
       </Routes> 
       <Footer/>
     </>

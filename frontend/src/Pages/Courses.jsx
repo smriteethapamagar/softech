@@ -1,142 +1,126 @@
-import React from 'react'
-import java from '../assets/java.webp'
-import mern from '../assets/mern.webp'
-import net from '../assets/net.webp'
-import python from '../assets/python.webp'
-import qa from '../assets/qa.webp'
-import web from '../assets/web.webp'
-import { Link } from 'react-router-dom'
+import React, { useEffect, useCallback } from 'react';
+import useCourseStore from '../store/useCourseStore';
 
 function Courses() {
+  const { courses, loading, error, fetchCourses } = useCourseStore();
+  
+  const memoizedFetchCourses = useCallback(() => {
+    fetchCourses();
+  }, [fetchCourses]);
+
+  useEffect(() => {
+    memoizedFetchCourses();
+  }, [memoizedFetchCourses]);
+
+  const handleImageError = (e) => {
+    e.target.src = 'https://placehold.co/300x200/e9ecef/495057?text=No+Image';
+  };
+
+  if (loading) {
+    return (
+      <div className="courses-page">
+        <div className="centered-message">
+          <div style={{ marginBottom: '1rem', fontSize: '2rem' }}>⏳</div>
+          Loading courses...
+        </div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="courses-page">
+        <div className="error-message">
+          <div style={{ marginBottom: '1rem', fontSize: '2rem' }}>⚠️</div>
+          <strong>Error loading courses:</strong><br />
+          {error}
+          <div style={{ marginTop: '1rem' }}>
+            <button 
+              onClick={memoizedFetchCourses}
+              className="btn-learn-more"
+              style={{ backgroundColor: '#d9534f', color: 'white' }}
+            >
+              Try Again
+            </button>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  if (!courses || courses.length === 0) {
+    return (
+      <div className="courses-page">
+        <div className="courses-header">
+          <h1 className="courses-title">Explore Our Courses</h1>
+          <p className="courses-subtitle">
+            Upskill in tech with hands-on, industry-relevant programs designed by experts.
+          </p>
+        </div>
+        <div className="empty-state">
+          <div className="empty-state-icon">📚</div>
+          <h3 style={{ marginBottom: '1rem', color: '#333' }}>No Courses Available</h3>
+          <p>We're working on adding new courses. Please check back soon!</p>
+        </div>
+      </div>
+    );
+  }
+
   return (
-    <div>
-       <div className='d-flex justify-content-center contact'>
-        <div className='text-center'>
-          <h1>Explore Our Courses</h1>
-          <p>Upskill in tech with hands-on, industry-relevant programs <br />
-          designed by experts.</p>
+    <div className="courses-page">
+      {/* Header */}
+      <div className="courses-header">
+        <h1 className="courses-title">Explore Our Courses</h1>
+        <p className="courses-subtitle">
+          Upskill in tech with hands-on, industry-relevant programs designed by experts.
+        </p>
+      </div>
+
+      {/* Courses Grid */}
+      <div className="courses-grid">
+        {courses.map((course) => (
+          <div 
+            key={course._id}
+            className="course-card-alt"
+            role="article"
+            aria-labelledby={`course-title-${course._id}`}
+          >
+            <img 
+              src={course.image || 'https://placehold.co/300x200/e9ecef/495057?text=No+Image'} 
+              alt={course.courseName ? `Course: ${course.courseName}` : 'Course image'}
+              className="course-image-alt"
+              onError={handleImageError}
+              loading="lazy"
+            />
+            <div className="course-content-alt">
+              <h3 
+                id={`course-title-${course._id}`}
+                className="course-title-alt"
+              >
+                {course.courseName || 'Untitled Course'}
+              </h3>
+              
+              {course.timetable && (
+                <div className="course-duration-badge">
+                  🕒 {course.timetable}
+                </div>
+              )}
+              
+              <br />
+              
+              <a 
+                href={`/coursedetails/${course._id}`}
+                className="btn-learn-more"
+                aria-label={`Learn more about ${course.courseName || 'this course'}`}
+              >
+                Learn More →
+              </a>
+            </div>
           </div>
-          </div>
-          <div className="container mt-5 mb-5">
-             <div className='d-flex flex-wrap justify-content-between gap-5'>
-              <div className='border pb-3'>
-                      <div>
-                        <img src={java} alt="" width={300} />
-                        <p className='fw-bold px-4 pt-3' style={{ color: '#014B88' }}>Java Programming</p>
-                        <a href="" className="btn btn-outline ms-3 mb-3 px-3 py-0 rounded-pill " style={{ background: '#DAE7FF', color: '#014B88' }}><i className="bi bi-clock px-2"></i>2 Months</a>
-                          </div>
-                        <Link className='bb ms-3 px-3 rounded' style={{background: '#DAE7FF', color: '#014B88'}} 
-                        to="/coursedetails">Learn More <i className="bi bi-arrow-right"></i></Link>
-                     </div>
-            
-                     <div className='border pb-3'>
-                      <div>
-                        <img src={java} alt="" width={300} />
-                        <p className='fw-bold px-4 pt-3' style={{ color: '#014B88' }}>Java Programming</p>
-                        <a href="" className="btn btn-outline ms-3 mb-3 px-3 py-0 rounded-pill " style={{ background: '#DAE7FF', color: '#014B88' }}><i className="bi bi-clock px-2"></i>2 Months</a>
-                          </div>
-                        <Link className='bb ms-3 px-3 rounded' style={{background: '#DAE7FF', color: '#014B88'}} 
-                        to="/coursedetails">Learn More <i className="bi bi-arrow-right"></i></Link>
-                     </div>
-            
-            
-            <div className='border pb-3'>
-                      <div>
-                        <img src={java} alt="" width={300} />
-                        <p className='fw-bold px-4 pt-3' style={{ color: '#014B88' }}>Java Programming</p>
-                        <a href="" className="btn btn-outline ms-3 mb-3 px-3 py-0 rounded-pill " style={{ background: '#DAE7FF', color: '#014B88' }}><i className="bi bi-clock px-2"></i>2 Months</a>
-                          </div>
-                        <Link className='bb ms-3 px-3 rounded' style={{background: '#DAE7FF', color: '#014B88'}} 
-                        to="/coursedetails">Learn More <i className="bi bi-arrow-right"></i></Link>
-                     </div>
-            
-            
-                    <div className='border pb-3'>
-                      <div>
-                        <img src={java} alt="" width={300} />
-                        <p className='fw-bold px-4 pt-3' style={{ color: '#014B88' }}>Java Programming</p>
-                        <a href="" className="btn btn-outline ms-3 mb-3 px-3 py-0 rounded-pill " style={{ background: '#DAE7FF', color: '#014B88' }}><i className="bi bi-clock px-2"></i>2 Months</a>
-                          </div>
-                        <Link className='bb ms-3 px-3 rounded' style={{background: '#DAE7FF', color: '#014B88'}} 
-                        to="/coursedetails">Learn More <i className="bi bi-arrow-right"></i></Link>
-                     </div>
-            
-                    <div className='border pb-3'>
-                      <div>
-                        <img src={java} alt="" width={300} />
-                        <p className='fw-bold px-4 pt-3' style={{ color: '#014B88' }}>Java Programming</p>
-                        <a href="" className="btn btn-outline ms-3 mb-3 px-3 py-0 rounded-pill " style={{ background: '#DAE7FF', color: '#014B88' }}><i className="bi bi-clock px-2"></i>2 Months</a>
-                          </div>
-                        <Link className='bb ms-3 px-3 rounded' style={{background: '#DAE7FF', color: '#014B88'}} 
-                        to="/coursedetails">Learn More <i className="bi bi-arrow-right"></i></Link>
-                     </div>
-            
-            <div className='border pb-3'>
-                      <div>
-                        <img src={java} alt="" width={300} />
-                        <p className='fw-bold px-4 pt-3' style={{ color: '#014B88' }}>Java Programming</p>
-                        <a href="" className="btn btn-outline ms-3 mb-3 px-3 py-0 rounded-pill " style={{ background: '#DAE7FF', color: '#014B88' }}><i className="bi bi-clock px-2"></i>2 Months</a>
-                          </div>
-                        <Link className='bb ms-3 px-3 rounded' style={{background: '#DAE7FF', color: '#014B88'}} 
-                        to="/coursedetails">Learn More <i className="bi bi-arrow-right"></i></Link>
-                     </div>
-            <div className='border pb-3'>
-                      <div>
-                        <img src={java} alt="" width={300} />
-                        <p className='fw-bold px-4 pt-3' style={{ color: '#014B88' }}>Java Programming</p>
-                        <a href="" className="btn btn-outline ms-3 mb-3 px-3 py-0 rounded-pill " style={{ background: '#DAE7FF', color: '#014B88' }}><i className="bi bi-clock px-2"></i>2 Months</a>
-                          </div>
-                        <Link className='bb ms-3 px-3 rounded' style={{background: '#DAE7FF', color: '#014B88'}} 
-                        to="/coursedetails">Learn More <i className="bi bi-arrow-right"></i></Link>
-                     </div>
-            
-            
-                     <div className='border pb-3'>
-                      <div>
-                        <img src={java} alt="" width={300} />
-                        <p className='fw-bold px-4 pt-3' style={{ color: '#014B88' }}>Java Programming</p>
-                        <a href="" className="btn btn-outline ms-3 mb-3 px-3 py-0 rounded-pill " style={{ background: '#DAE7FF', color: '#014B88' }}><i className="bi bi-clock px-2"></i>2 Months</a>
-                          </div>
-                        <Link className='bb ms-3 px-3 rounded' style={{background: '#DAE7FF', color: '#014B88'}} 
-                        to="/coursedetails">Learn More <i className="bi bi-arrow-right"></i></Link>
-                     </div>
-            
-            
-                     <div className='border pb-3'>
-                      <div>
-                        <img src={java} alt="" width={300} />
-                        <p className='fw-bold px-4 pt-3' style={{ color: '#014B88' }}>Java Programming</p>
-                        <a href="" className="btn btn-outline ms-3 mb-3 px-3 py-0 rounded-pill " style={{ background: '#DAE7FF', color: '#014B88' }}><i className="bi bi-clock px-2"></i>2 Months</a>
-                          </div>
-                        <Link className='bb ms-3 px-3 rounded' style={{background: '#DAE7FF', color: '#014B88'}} 
-                        to="/coursedetails">Learn More <i className="bi bi-arrow-right"></i></Link>
-                     </div>
-            
-                        <div className='border pb-3'>
-                      <div>
-                        <img src={java} alt="" width={300} />
-                        <p className='fw-bold px-4 pt-3' style={{ color: '#014B88' }}>Java Programming</p>
-                        <a href="" className="btn btn-outline ms-3 mb-3 px-3 py-0 rounded-pill " style={{ background: '#DAE7FF', color: '#014B88' }}><i className="bi bi-clock px-2"></i>2 Months</a>
-                          </div>
-                        <Link className='bb ms-3 px-3 rounded' style={{background: '#DAE7FF', color: '#014B88'}} 
-                        to="/coursedetails">Learn More <i className="bi bi-arrow-right"></i></Link>
-                     </div>
-            
-                      {/* <div className='border pb-3'>
-                      <div>
-                        <img src={java} alt="" width={300} />
-                        <p className='fw-bold px-4 pt-3' style={{ color: '#014B88' }}>Java Programming</p>
-                        <a href="" className="btn btn-outline ms-3 mb-3 px-3 py-0 rounded-pill " style={{ background: '#DAE7FF', color: '#014B88' }}><i className="bi bi-clock px-2"></i>2 Months</a>
-                          </div>
-                        <Link className='bb ms-3 px-3 rounded' style={{background: '#DAE7FF', color: '#014B88'}} 
-                        to="/coursedetails">Learn More <i className="bi bi-arrow-right"></i></Link>
-                     </div>
-             */}
-            
-                    </div>
-          </div>
+        ))}
+      </div>
     </div>
-  )
+  );
 }
 
-export default Courses
+export default Courses;

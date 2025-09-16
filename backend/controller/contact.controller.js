@@ -1,6 +1,5 @@
 import Contact from '../model/contact.model.js'
 
-// Create a new contact message
 export const createContact = async (req, res) => {
   try {
     const { name, email, course, phone, message } = req.body;
