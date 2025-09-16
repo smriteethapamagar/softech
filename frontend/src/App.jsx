@@ -45,7 +45,9 @@ function App() {
   }
   return (
     <>
-      <Header/>
+    <div>
+         {!isAdminRoute && <Header />}
+
       <Routes>
         <Route path='/' element={<Home/>}/>
         <Route path='/contactus' element={<ContactUs/>}/>
@@ -63,6 +65,7 @@ function App() {
 
       </Routes> 
       <Footer/>
+    </div>
     </>
   )
 }

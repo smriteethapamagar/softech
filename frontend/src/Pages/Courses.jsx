@@ -20,8 +20,28 @@ function Courses() {
     return (
       <div className="courses-page">
         <div className="centered-message">
-          <div style={{ marginBottom: '1rem', fontSize: '2rem' }}>⏳</div>
+          <div style={{ textAlign: "center" }}>
+          <div
+            style={{
+              marginBottom: "1rem",
+              fontSize: "2rem",
+              display: "inline-block",
+              animation: "spin 1s linear infinite"
+            }}
+          >
+            ⏳
+          </div>
           Loading courses...
+          <style>
+            {`
+              @keyframes spin {
+                from { transform: rotate(0deg); }
+                to { transform: rotate(360deg); }
+              }
+            `}
+          </style>
+        </div>
+
         </div>
       </div>
     );
