@@ -8,11 +8,11 @@ function Footer() {
       <div className="container-fluid px-3 px-md-5 py-5">
         <div className="row g-4">
           {/* About Section */}
-          <div className="col-12 col-md-6 col-lg-3 footer-section">
+          <div className="col-12 col-md-6 col-lg-4 footer-section">
             <div className="footer-logo">
               <img src={logo} alt="Softech Logo" width={120} className="mb-3" />
             </div>
-            <p className="mb-4">
+            <p className="mb-5">
               We're an innovative IT company providing tailored solutions in 
               software development, web design, cybersecurity, 
               cloud computing, and IT consulting.
