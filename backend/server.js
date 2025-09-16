@@ -4,10 +4,13 @@ import express from 'express'
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
 import connectDB from './lib/mongoDb.js';
+
 import contactRoutes from './routes/contact.route.js'
 import inquiryRoutes from './routes/inquiry.route.js'
 import blogRoutes from './routes/blogs.route.js'
 import courseRoutes from './routes/course.route.js'
+import authRoutes from './routes/auth.route.js'
+
 import {v2 as cloudinary} from 'cloudinary';
 
 cloudinary.config({
@@ -28,6 +31,7 @@ app.use(express.json({ limit: "10mb" }));
 app.use(express.urlencoded({ limit: "10mb", extended: true }));
 app.use(cookieParser());
 
+app.use('/api/auth', authRoutes)
 app.use('/api/contacts', contactRoutes)
 app.use('/api/inquiries', inquiryRoutes)
 app.use('/api/blogs', blogRoutes)
