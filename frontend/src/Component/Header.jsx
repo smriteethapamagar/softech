@@ -169,7 +169,7 @@ function Header() {
               <li className="nav-item ms-lg-2">
                 <Link 
                   className="btn btn-inquiry" 
-                  to="/enquiryform"
+                  to="/inquiryform"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   <i className="bi bi-envelope me-2"></i>

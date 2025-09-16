@@ -13,16 +13,7 @@ const coursesSchema = new mongoose.Schema(
       trim: true,
     },
     classDays: {
-      type: [String],
-      enum: [
-        "Monday",
-        "Tuesday",
-        "Wednesday",
-        "Thursday",
-        "Friday",
-        "Saturday",
-        "Sunday",
-      ],
+      type: String,
     },
     skillLevel: {
       type: String,
