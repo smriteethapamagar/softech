@@ -1,7 +1,7 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Header from './Component/Header'
 import Footer from './Component/Footer'
-import { Route, Routes } from 'react-router-dom'
+import { Route, Routes, useLocation } from 'react-router-dom'
 import Home from './Pages/Home'
 import ContactUs from './Pages/ContactUs'
 import Blogs from './Pages/Blogs'
@@ -9,7 +9,8 @@ import Courses from './Pages/Courses'
 import CourseDetails from './Pages/CourseDetails'
 import BlogDetails from './Pages/BlogDetails'
 import EnquiryForm from './Pages/EnquiryForm'
-import Login from './Pages/Login'
+import AdminDashboard from './admin/pages/Dashboard'
+import { useAuthStore } from './store/useAuthStore'
 
 function App() {
 
@@ -55,8 +56,9 @@ function App() {
         <Route path='/inquiryform' element={<EnquiryForm/>}/>
 
         {/* admin */}
-          <Route path="/admin" element={authUser? <AdminDashboard /> :<Navigate to="/admin/login" />} />
-          <Route path="/admin/login" element={!authUser?<AdminLogin />:<Navigate to="/admin" />}/>
+          {/* <Route path="/admin" element={authUser? <AdminDashboard /> :<Navigate to="/admin/login" />} /> */}
+          <Route path="/admin" element={<AdminDashboard />} />
+          {/* <Route path="/admin/login" element={!authUser?<AdminLogin />:<Navigate to="/admin" />}/> */}
 
 
       </Routes> 

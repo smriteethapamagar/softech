@@ -1,4 +1,5 @@
 /* new css  */
+@import "tailwindcss";
 
 .home-page {
   --primary-color: #014B88;
