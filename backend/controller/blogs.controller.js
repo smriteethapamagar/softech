@@ -45,7 +45,7 @@ export const createBlog = async (req, res) => {
 // Get all blogs
 export const getBlogs = async (req, res) => {
   try {
-    const blogs = await Blogs.find().populate("author", "name email").sort({ createdAt: -1 });
+    const blogs = await Blogs.find().populate("author").sort({ createdAt: -1 });
     res.status(200).json(blogs);
   } catch (error) {
     console.error(error);
@@ -56,7 +56,7 @@ export const getBlogs = async (req, res) => {
 // Get single blog by ID
 export const getBlogById = async (req, res) => {
   try {
-    const blog = await Blogs.findById(req.params.id).populate("author", "name email");
+    const blog = await Blogs.findById(req.params.id).populate("author");
     if (!blog) {
       return res.status(404).json({ message: "Blog not found" });
     }

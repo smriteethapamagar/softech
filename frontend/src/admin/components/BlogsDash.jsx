@@ -12,7 +12,6 @@ const BlogsDash = () => {
     updateBlog 
   } = useBlogStore();
 
-  // State management
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('');
   const [selectedBlog, setSelectedBlog] = useState(null);
@@ -34,7 +33,6 @@ const BlogsDash = () => {
     secondImage: ''
   });
 
-  // Validation errors
   const [validationErrors, setValidationErrors] = useState({});
 
   useEffect(() => {
