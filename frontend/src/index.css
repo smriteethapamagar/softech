@@ -1,5 +1,3 @@
-/* new css  */
-/* @import "tailwindcss"; */
 
 .home-page {
   --primary-color: #014B88;
@@ -1196,6 +1194,9 @@ background-color: rgba(255, 255, 255, 0.1);
   transform: rotate(-45deg) translate(7px, -6px);
 }
 
+.footer{
+  margin-left: 70px;
+}
 /* Header Mobile Styles */
 @media (max-width: 991.98px) {
   .navbar-collapse {
