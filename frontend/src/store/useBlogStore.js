@@ -1,7 +1,7 @@
 import { create } from "zustand";
 import { axiosInstance } from "../libs/axios"
 
-const useBlogStore = create((set, get) => ({
+export const useBlogStore = create((set, get) => ({
   blogs: [],
   blog: null,
   loading: false,
@@ -70,4 +70,3 @@ const useBlogStore = create((set, get) => ({
   },
 }));
 
-export default useBlogStore;

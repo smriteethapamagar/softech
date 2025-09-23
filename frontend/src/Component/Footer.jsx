@@ -6,9 +6,9 @@ function Footer() {
   return (
     <footer style={{ background: '#014B88', color: 'white', marginTop: '80px' }}>
       <div className="container-fluid px-3 px-md-5 py-5">
-        <div className="row g-4">
+        <div className="row g-5">
           {/* About Section */}
-          <div className="col-12 col-md-6 col-lg-4 footer-section">
+          <div className="footer col-12 col-md-6 col-lg-4 footer-section">
             <div className="footer-logo">
               <img src={logo} alt="Softech Logo" width={120} className="mb-3" />
             </div>

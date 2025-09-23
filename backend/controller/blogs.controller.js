@@ -4,7 +4,7 @@ import { v2 as cloudinary } from "cloudinary";
 // Create blog
 export const createBlog = async (req, res) => {
   try {
-    const { title, subTitle, content, titleImage, secondImage } = req.body;
+    const { title, subTitle, content, titleImage, secondImage, tags, category, author } = req.body;
 
     let titleImageUrl = null;
     let secondImageUrl = null;
@@ -29,6 +29,9 @@ export const createBlog = async (req, res) => {
       content,
       titleImage: titleImageUrl,
       secondImage: secondImageUrl,
+      tags,
+      category,
+      author,
     });
 
     await newBlog.save();
@@ -42,7 +45,7 @@ export const createBlog = async (req, res) => {
 // Get all blogs
 export const getBlogs = async (req, res) => {
   try {
-    const blogs = await Blogs.find().sort({ createdAt: -1 });
+    const blogs = await Blogs.find().populate("author").sort({ createdAt: -1 });
     res.status(200).json(blogs);
   } catch (error) {
     console.error(error);
@@ -50,16 +53,38 @@ export const getBlogs = async (req, res) => {
   }
 };
 
-// Get single blog by ID
+// Get single blog by ID or slug
 export const getBlogById = async (req, res) => {
   try {
-    const blog = await Blogs.findById(req.params.id);
+    const { id } = req.params;
+    console.log(`Fetching blog with ID/slug: ${id}`);
+    
+    // Check if it's a valid ObjectId, otherwise treat as slug
+    const isObjectId = /^[0-9a-fA-F]{24}$/.test(id);
+    let blog;
+    
+    if (isObjectId) {
+      blog = await Blogs.findById(id).populate("author");
+    } else {
+      blog = await Blogs.findOne({ slug: id }).populate("author");
+    }
+    
     if (!blog) {
+      console.log(`Blog not found for ID/slug: ${id}`);
       return res.status(404).json({ message: "Blog not found" });
     }
+
+    console.log(`Blog found: ${blog.title}, Current views: ${blog.views}`);
+    
+    // increase view count
+    blog.views += 1;
+    await blog.save();
+    
+    console.log(`Blog views updated to: ${blog.views}`);
+
     res.status(200).json(blog);
   } catch (error) {
-    console.error(error);
+    console.error('Error in getBlogById:', error);
     res.status(500).json({ message: "Server error in fetching blog" });
   }
 };
@@ -67,9 +92,9 @@ export const getBlogById = async (req, res) => {
 // Update blog
 export const updateBlog = async (req, res) => {
   try {
-    const { title, subTitle, content, titleImage, secondImage } = req.body;
+    const { title, subTitle, content, titleImage, secondImage, tags, category } = req.body;
 
-    let updateData = { title, subTitle, content };
+    let updateData = { title, subTitle, content, tags, category };
 
     if (titleImage) {
       const uploadedResponse = await cloudinary.uploader.upload(titleImage, {

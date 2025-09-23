@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import Header from './Component/Header'
 import Footer from './Component/Footer'
-import { Route, Routes, useLocation } from 'react-router-dom'
+import { Navigate, Route, Routes, useLocation } from 'react-router-dom'
 import Home from './Pages/Home'
 import ContactUs from './Pages/ContactUs'
 import Blogs from './Pages/Blogs'
@@ -11,6 +11,8 @@ import BlogDetails from './Pages/BlogDetails'
 import EnquiryForm from './Pages/EnquiryForm'
 import AdminDashboard from './admin/pages/Dashboard'
 import { useAuthStore } from './store/useAuthStore'
+import LoginPage from './admin/pages/LoginPage'
+import { LoaderCircle } from 'lucide-react'
 
 function App() {
 
@@ -44,7 +46,7 @@ function App() {
     );
   }
   return (
-    <>
+    <> 
     <div>
          {!isAdminRoute && <Header />}
 
@@ -53,18 +55,18 @@ function App() {
         <Route path='/contactus' element={<ContactUs/>}/>
         <Route path='/blogs' element={<Blogs/>}/>
         <Route path='/courses' element={<Courses/>}/>
-        <Route path='/coursedetails' element={<CourseDetails/>}/>
-        <Route path='/blogdetails' element={<BlogDetails/>}/>
+        <Route path='/coursedetails/:id' element={<CourseDetails/>}/>
+        <Route path='/blogdetails/:slug' element={<BlogDetails/>}/>
         <Route path='/inquiryform' element={<EnquiryForm/>}/>
 
-        {/* admin */}
-          {/* <Route path="/admin" element={authUser? <AdminDashboard /> :<Navigate to="/admin/login" />} /> */}
-          <Route path="/admin" element={<AdminDashboard />} />
-          {/* <Route path="/admin/login" element={!authUser?<AdminLogin />:<Navigate to="/admin" />}/> */}
+            {/* admin routes */}
+          <Route path="/admin/login" element={!authUser ? <LoginPage /> : <Navigate to="/admin" />} />
+          <Route path="/admin" element={authUser? <AdminDashboard /> :<Navigate to="/admin/login" />} />
 
 
       </Routes> 
-      <Footer/>
+      {!isAdminRoute &&  <Footer/>}
+   
     </div>
     </>
   )
